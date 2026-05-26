@@ -24,3 +24,7 @@ plt.ylabel('평균 지연시간 (분)')
 plt.grid(True)
 plt.tight_layout()
 plt.show()
+
+# 출발 도시별 평균 지연시간 상위 10개
+city_delay = df.groupby('OriginCityName')['DepDelayMinutes'].mean().sort_values(ascending=False).head(10)
+print(city_delay)
