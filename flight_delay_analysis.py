@@ -28,3 +28,13 @@ plt.show()
 # 출발 도시별 평균 지연시간 상위 10개
 city_delay = df.groupby('OriginCityName')['DepDelayMinutes'].mean().sort_values(ascending=False).head(10)
 print(city_delay)
+
+# 지연 원인별 분석
+delay_causes = df[['CarrierDelay', 'WeatherDelay', 'NASDelay', 'SecurityDelay', 'LateAircraftDelay']].mean()
+
+print(delay_causes)
+
+delay_causes.plot(kind='bar', figsize=(10,5), color=['steelblue', 'skyblue', 'lightblue', 'navy', 'royalblue'])
+plt.title('지연 원인별 평균 지연시간 (분)')
+plt.xlabel('지연 원인')
+plt.ylab
