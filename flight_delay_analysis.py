@@ -38,3 +38,17 @@ delay_causes.plot(kind='bar', figsize=(10,5), color=['steelblue', 'skyblue', 'li
 plt.title('지연 원인별 평균 지연시간 (분)')
 plt.xlabel('지연 원인')
 plt.ylab
+
+# 시간대별 평균 지연시간
+df['Hour'] = df['CRSDepTime'] // 100
+
+hourly_delay = df.groupby('Hour')['DepDelayMinutes'].mean()
+
+hourly_delay.plot(kind='line', figsize=(12,5), color='steelblue', marker='o')
+plt.title('시간대별 평균 출발 지연시간 (분)')
+plt.xlabel('출발 시간 (시)')
+plt.ylabel('평균 지연시간 (분)')
+plt.xticks(range(0,24))
+plt.grid(True)
+plt.tight_layout()
+plt.show()
